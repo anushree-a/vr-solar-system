@@ -3,8 +3,8 @@ import {
   AppRegistry,
   asset,
   Pano,
-  Text,
   View,
+  Model,
 } from 'react-vr';
 
 export default class solarSystem extends React.Component {
@@ -12,6 +12,16 @@ export default class solarSystem extends React.Component {
     return (
       <View>
         <Pano source={asset('space.jpg')}/>
+        <Model
+          source={{obj:asset('sphere.obj')}}
+          texture={asset('sun.jpg')}
+          style={{
+            transform: [
+              {translate:[-40,0,0]},
+              {scale:[5,5,5]}
+            ]
+          }}
+        />
       </View>
     );
   }
