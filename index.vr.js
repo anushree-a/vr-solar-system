@@ -5,6 +5,7 @@ import {
   Pano,
   View,
   Model,
+  PointLight
 } from 'react-vr';
 
 export default class solarSystem extends React.Component {
@@ -12,6 +13,7 @@ export default class solarSystem extends React.Component {
     return (
       <View>
         <Pano source={asset('space.jpg')}/>
+        <PointLight intensity={1} style={{color:'white', transform:[{translate: [0,0,0]}]}} />
         <Model
           source={{obj:asset('sphere.obj')}}
           texture={asset('sun.jpg')}
@@ -25,6 +27,7 @@ export default class solarSystem extends React.Component {
         <Model
           source={{obj:asset('sphere.obj')}}
           texture={asset('mercury.jpg')}
+          lit
           style={{
             transform: [
               {translate:[-20,0,-50]},
@@ -35,6 +38,7 @@ export default class solarSystem extends React.Component {
         <Model
           source={{obj:asset('sphere.obj')}}
           texture={asset('venus.jpg')}
+          lit
           style={{
             transform: [
               {translate:[-20,20,-50]},
@@ -45,6 +49,7 @@ export default class solarSystem extends React.Component {
         <Model
           source={{obj:asset('sphere.obj')}}
           texture={asset('earth.png')}
+          lit
           style={{
             transform: [
               {translate:[0,0,-50]},
@@ -55,6 +60,7 @@ export default class solarSystem extends React.Component {
         <Model
           source={{obj:asset('sphere.obj')}}
           texture={asset('mars.jpg')}
+          lit
           style={{
             transform: [
               {translate:[20,0,-50]},
@@ -65,6 +71,7 @@ export default class solarSystem extends React.Component {
         <Model
           source={{obj:asset('sphere.obj')}}
           texture={asset('jupiter.jpg')}
+          lit
           style={{
             transform: [
               {translate:[50,0,-50]},
@@ -75,6 +82,7 @@ export default class solarSystem extends React.Component {
         <Model
           source={{obj:asset('Saturn.obj')}}
           texture={asset('saturn.jpg')}
+          lit
           style={{
             transform: [
               {translate:[100,0,-50]},
@@ -85,6 +93,7 @@ export default class solarSystem extends React.Component {
         <Model
           source={{obj:asset('sphere.obj')}}
           texture={asset('uranus.jpg')}
+          lit
           style={{
             transform: [
               {translate:[100,0,-50]},
