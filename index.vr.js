@@ -26,7 +26,7 @@ export default class solarSystem extends React.Component {
     }
   }
 
-  _rotateSun() {
+  _rotatePlanetOnAxis() {
     this.setState({
       rotation: this.state.rotation + 1,
     });
@@ -37,7 +37,7 @@ export default class solarSystem extends React.Component {
       });
     }
 
-    requestAnimationFrame(this._rotateSun.bind(this));
+    requestAnimationFrame(this._rotatePlanetOnAxis.bind(this));
   }
 
   _revolvePlanetAroundSun() {
@@ -104,7 +104,7 @@ export default class solarSystem extends React.Component {
   }
 
   componentDidMount () {
-    this._rotateSun()
+    this._rotatePlanetOnAxis()
     this._revolvePlanetAroundSun()
   }
 
@@ -131,7 +131,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[xScaler*Math.cos(this.state.thetaMercury), 0 ,yScaler*Math.sin(this.state.thetaMercury)]},
-              {scale:[0.8,0.8,0.8]}
+              {scale:[0.8,0.8,0.8]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
@@ -142,7 +143,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[xScaler*Math.cos(this.state.thetaVenus), 0 ,yScaler*Math.sin(this.state.thetaVenus)]},
-              {scale:[1.1,1.1,1.1]}
+              {scale:[1.1,1.1,1.1]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
@@ -153,7 +155,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[xScaler*Math.cos(this.state.thetaEarth), 0 ,yScaler*Math.sin(this.state.thetaEarth)]},
-              {scale:[1.4,1.4,1.4]}
+              {scale:[1.4,1.4,1.4]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
@@ -164,7 +167,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[xScaler*Math.cos(this.state.thetaMars), 0 ,yScaler*Math.sin(this.state.thetaMars)]},
-              {scale:[0.9,0.9,0.9]}
+              {scale:[0.9,0.9,0.9]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
@@ -175,7 +179,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[xScaler*Math.cos(this.state.thetaJupiter), 0 ,yScaler*Math.sin(this.state.thetaJupiter)]},
-              {scale:[4.5,4.5,4.5]}
+              {scale:[4.5,4.5,4.5]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
@@ -200,7 +205,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[xScaler*Math.cos(this.state.thetaUranus), 0 ,yScaler*Math.sin(this.state.thetaUranus)]},
-              {scale:[3.5,3.5,3.5]}
+              {scale:[3.5,3.5,3.5]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
@@ -211,7 +217,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[xScaler*Math.cos(this.state.thetaNeptune), 0 ,yScaler*Math.sin(this.state.thetaNeptune)]},
-              {scale:[3.5,3.5,3.5]}
+              {scale:[3.5,3.5,3.5]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
