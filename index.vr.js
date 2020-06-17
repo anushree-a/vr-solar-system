@@ -86,7 +86,10 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[100,0,-50]},
-              {scale:[3.5,3.5,3.5]}
+              {scale:[3.5,3.5,3.5]},
+              {rotateX:-20},
+              {rotateY:20},
+              {rotateX:-20},
             ]
           }}
         />
@@ -97,6 +100,17 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[100,0,-50]},
+              {scale:[3.5,3.5,3.5]}
+            ]
+          }}
+        />
+        <Model
+          source={{obj:asset('sphere.obj')}}
+          texture={asset('neptune.jpg')}
+          lit
+          style={{
+            transform: [
+              {translate:[120,0,-50]},
               {scale:[3.5,3.5,3.5]}
             ]
           }}
