@@ -8,11 +8,21 @@ import {
   PointLight
 } from 'react-vr';
 
+const xScaler = 70;
+const yScaler = 60;
 export default class solarSystem extends React.Component {
   constructor () {
     super();
     this.state = {
-      rotation: 0
+      rotation: 0,
+      thetaMercury: 30,
+      thetaVenus: 50,
+      thetaEarth: 70,
+      thetaMars: 90,
+      thetaJupiter: 110,
+      thetaSaturn: 130,
+      thetaUranus: 150,
+      thetaNeptune: 170
     }
   }
 
@@ -30,8 +40,72 @@ export default class solarSystem extends React.Component {
     requestAnimationFrame(this._rotateSun.bind(this));
   }
 
+  _revolvePlanetAroundSun() {
+    this.setState({
+      thetaMercury: this.state.thetaMercury + 0.005,
+      thetaVenus: this.state.thetaVenus + 0.009,
+      thetaEarth: this.state.thetaEarth + 0.004,
+      thetaMars: this.state.thetaMars + 0.009,
+      thetaJupiter: this.state.thetaJupiter + 0.010,
+      thetaSaturn: this.state.thetaSaturn + 0.002,
+      thetaUranus: this.state.thetaUranus + 0.001,
+      thetaNeptune: this.state.thetaNeptune + 0.012
+    });
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaMercury: 1,
+      });
+    }
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaVenus: 1,
+      });
+    }
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaEarth: 1,
+      });
+    }
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaMars: 1,
+      });
+    }
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaJupiter: 1,
+      });
+    }
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaSaturn: 1,
+      });
+    }
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaUranus: 1,
+      });
+    }
+
+    if (this.state.thetaMercury > 360) {
+      this.setState({
+        thetaNeptune: 1,
+      });
+    }
+
+    requestAnimationFrame(this._revolvePlanetAroundSun.bind(this));
+  }
+
   componentDidMount () {
     this._rotateSun()
+    this._revolvePlanetAroundSun()
   }
 
   render() {
@@ -56,7 +130,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[-20,0,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaMercury), 0 ,yScaler*Math.sin(this.state.thetaMercury)]},
               {scale:[0.8,0.8,0.8]}
             ]
           }}
@@ -67,7 +141,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[-20,20,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaVenus), 0 ,yScaler*Math.sin(this.state.thetaVenus)]},
               {scale:[1.1,1.1,1.1]}
             ]
           }}
@@ -78,7 +152,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[0,0,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaEarth), 0 ,yScaler*Math.sin(this.state.thetaEarth)]},
               {scale:[1.4,1.4,1.4]}
             ]
           }}
@@ -89,7 +163,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[20,0,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaMars), 0 ,yScaler*Math.sin(this.state.thetaMars)]},
               {scale:[0.9,0.9,0.9]}
             ]
           }}
@@ -100,7 +174,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[50,0,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaJupiter), 0 ,yScaler*Math.sin(this.state.thetaJupiter)]},
               {scale:[4.5,4.5,4.5]}
             ]
           }}
@@ -111,7 +185,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[100,0,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaSaturn), 0 ,yScaler*Math.sin(this.state.thetaSaturn)]},
               {scale:[3.5,3.5,3.5]},
               {rotateX:-20},
               {rotateY:20},
@@ -125,7 +199,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[100,0,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaUranus), 0 ,yScaler*Math.sin(this.state.thetaUranus)]},
               {scale:[3.5,3.5,3.5]}
             ]
           }}
@@ -136,7 +210,7 @@ export default class solarSystem extends React.Component {
           lit
           style={{
             transform: [
-              {translate:[120,0,-50]},
+              {translate:[xScaler*Math.cos(this.state.thetaNeptune), 0 ,yScaler*Math.sin(this.state.thetaNeptune)]},
               {scale:[3.5,3.5,3.5]}
             ]
           }}
