@@ -9,6 +9,31 @@ import {
 } from 'react-vr';
 
 export default class solarSystem extends React.Component {
+  constructor () {
+    super();
+    this.state = {
+      rotation: 0
+    }
+  }
+
+  _rotateSun() {
+    this.setState({
+      rotation: this.state.rotation + 1,
+    });
+
+    if (this.state.rotation > 360) {
+      this.setState({
+        rotation: 1,
+      });
+    }
+
+    requestAnimationFrame(this._rotateSun.bind(this));
+  }
+
+  componentDidMount () {
+    this._rotateSun()
+  }
+
   render() {
     return (
       <View>
@@ -20,7 +45,8 @@ export default class solarSystem extends React.Component {
           style={{
             transform: [
               {translate:[-40,0,0]},
-              {scale:[5,5,5]}
+              {scale:[5,5,5]},
+              {rotateY: this.state.rotation}
             ]
           }}
         />
